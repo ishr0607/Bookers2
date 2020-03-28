@@ -2,3 +2,7 @@
 
 <%= @book.title %>
 <%= @book.body %>
+
+<% if @book.user_id == current_user %>
+	<%= link_to "Destroy", book_path(@book), method: :destroy %>
+<% end %>
