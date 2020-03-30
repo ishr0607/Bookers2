@@ -10,30 +10,43 @@
   </head>
 
   <body>
-    <h1>Bookers</h1>
+    <header>
+      <div class="clearfix">
+        <h1 class="header-logo">Bookers</h1>
+          <div class="header-nav">
+            <ul>
+            <% if user_signed_in? %>
+            <li class="link">
+              <%= link_to "Home", user_path(current_user.id) %>
+            </li>
+            <li class="link">
+              <%= link_to 'Users', books_path %>
+            </li>
+            <li class="link">
+              <%= link_to 'Books', books_path %>
+            </li>
+            <li class="link">
+              <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li class="link">
+              <%= link_to "Home", books_path %>
+            </li>
+            <li class="link">
+              <%= link_to "About", books_path %>
+            </li>
+            <li class="link">
+              <%= link_to "sign up", new_user_registration_path %>
+            </li>
+            <li class="link">
+              <%= link_to "login", new_user_session_path %>
+            </li>
+           <% end %>
+         </ul>
+          </div>
+      </div>
+    </header>
 
-  <% if user_signed_in? %>
-    <li class="">
-      <%= link_to "Home", user_path(current_user.id) %>
-    </li>
-    <li class="">
-      <%= link_to 'Users', user_path(current_user.id) %>
-    </li>
-    <li class="">
-      <%= link_to 'Books', user_path(current_user.id) %>
-    </li>
-    <li class="">
-      <%= link_to 'logout', destroy_user_session_path, method: :delete %>
-    </li>
-  <% else %>
-    <li class="">
-      <%= link_to "新規登録", new_user_registration_path %>
-    </li>
-    <li class="">
-      <%= link_to "ログイン", new_user_session_path %>
-    </li>
-   <% end %>
-   
     <%= yield %>
   </body>
 </html>
