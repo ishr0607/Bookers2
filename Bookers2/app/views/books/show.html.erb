@@ -1,11 +1,16 @@
+<%= flash[:notice] %>
 <h2>Book detail</h2>
 
 <div class="user-info">
-	<h5>icon</h5>
+	<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+	<%= @user.name %>
 </div>
+
+
 <%= @book.title %>
 <%= @book.body %>
 
 <% if @book.user == current_user %>
+	<%= link_to "Edit", edit_book_path(@book) %>
 	<%= link_to "Destroy", book_path(@book), method: :delete %>
 <% end %>
