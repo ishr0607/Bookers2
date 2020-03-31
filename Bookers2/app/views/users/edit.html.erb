@@ -2,9 +2,9 @@
 
 <%= form_for(@user) do |f| %>
 
-        <label>Name<%= f.text_field :name, autofocus: true %></label>
-        <br><label>Image<%= f.attachment_field :profile_image %></label>
-        <br><label>Introduction<%= f.text_area :introduction %></label>
+        <label><strong>Name</strong><%= f.text_field :name, autofocus: true %></label>
+        <br><label><strong>Image</strong><%= f.attachment_field :profile_image %></label>
+        <br><label><strong>Introduction</strong><%= f.text_area :introduction %></label>
 
     <br><%= f.submit "Update User" %>
 <% end %>
